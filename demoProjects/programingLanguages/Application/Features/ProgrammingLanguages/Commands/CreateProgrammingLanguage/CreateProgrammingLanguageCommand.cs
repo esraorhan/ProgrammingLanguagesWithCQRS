@@ -35,9 +35,10 @@ namespace Application.Features.ProgrammingLanguages.Commands.CreateProgrammingLa
             {
                 await _programmingLanguageBusinessRules.ProgramingLanguageNameCanNotBeDuplicatedWhenInserted(request.Name);
 
-                ProgrammingLanguage mappedprogrammingLanguage =_mapper.Map<ProgrammingLanguage>(request.Name);
+                ProgrammingLanguage mappedprogrammingLanguage =_mapper.Map<ProgrammingLanguage>(request);
                 ProgrammingLanguage createdprogrammingLanguage = await _programmingLanguageRepository.AddAsync(mappedprogrammingLanguage);
                 CreatedProgrammingLanguageDto createdProgrammingLanguageDto= _mapper.Map<CreatedProgrammingLanguageDto>(createdprogrammingLanguage);
+
 
                 return createdProgrammingLanguageDto;
             }

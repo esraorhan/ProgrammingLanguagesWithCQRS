@@ -22,7 +22,16 @@ namespace Application.Features.ProgrammingLanguages.Rules
         public async Task ProgramingLanguageNameCanNotBeDuplicatedWhenInserted(string name)
         {
             IPaginate<ProgrammingLanguage> result = await _repository.GetListAsync(b => b.Name == name);
-            if (result.Items.Any()) throw new BusinessException("Brand name exists.");
+            if (result.Items.Any()) throw new BusinessException("Program ismi aynı kayıttan vardır.");
+        }
+
+        public async Task ProgramingLanguageShouldExitsWhenRequested(int id)
+        {
+            ProgrammingLanguage pl = await _repository.GetAsync(b => b.Id == id);
+            if (pl == null)
+            {
+                new BusinessException("Requested brand doesn't  exist.");
+            }
         }
     }
 }

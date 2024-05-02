@@ -37,7 +37,8 @@ namespace Persistence.Contexts
                 a.Property(p => p.CreatedTime).HasColumnName("CreatedTime");
               
             });
-
+            ProgrammingLanguage[] programmingLanguageEntitySeeds = { new(1, "C#", "7.0", DateTime.Now), new(2, "Ruby", "4.0", DateTime.Now) };
+            modelBuilder.Entity<ProgrammingLanguage>().HasData(programmingLanguageEntitySeeds);
 
         }
     }

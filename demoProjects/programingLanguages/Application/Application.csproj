@@ -9,7 +9,6 @@
   <ItemGroup>
     <Folder Include="Features\ProgrammingLanguages\Models\" />
     <Folder Include="Features\ProgrammingLanguages\Queries\" />
-    <Folder Include="Features\ProgrammingLanguages\Profiles\" />
   </ItemGroup>
 
   <ItemGroup>

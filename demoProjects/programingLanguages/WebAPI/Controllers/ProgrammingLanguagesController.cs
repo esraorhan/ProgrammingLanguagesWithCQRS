@@ -1,4 +1,5 @@
 ﻿using Application.Features.ProgrammingLanguages.Commands.CreateProgrammingLanguage;
+using Application.Features.ProgrammingLanguages.Commands.UpdateProgrammingLanguage;
 using Application.Features.ProgrammingLanguages.Dtos;
 using Application.Features.ProgrammingLanguages.Models;
 using Application.Features.ProgrammingLanguages.Queries.GetByIdProgrammingLanguage;
@@ -34,6 +35,14 @@ namespace WebAPI.Controllers
         {
             GetByIdProgrammingLanguageDto PLGetByIdDto = await Mediator.Send(getByIdProgrammingLanguageQuery);
             return Ok(PLGetByIdDto);
+        }
+
+        [HttpPut("{Id}")]
+        public async Task<IActionResult> Update([FromBody] UpdateProgrammingLanguageCommand updateProgrammingLanguageCommand)
+        {
+            UpdatedProgrammingLanguageDto updatedProgrammingLanguageDto = await Mediator.Send(updateProgrammingLanguageCommand);
+
+            return Ok(updatedProgrammingLanguageDto);
         }
     }
 }

@@ -35,10 +35,23 @@ namespace Persistence.Contexts
                 a.Property(p => p.Name).HasColumnName("Name");
                 a.Property(p => p.Version).HasColumnName("Version");
                 a.Property(p => p.CreatedTime).HasColumnName("CreatedTime");
-              
+                a.HasMany(p => p.ProgrammingLanguageTechnologies);
+            });
+
+            modelBuilder.Entity<ProgrammingLanguageTechnology>(a =>
+            {
+                a.ToTable("ProgrammingLanguageTechnologies");
+                a.Property(p => p.Id).HasColumnName("Id");
+                a.Property(p => p.Name).HasColumnName("Name");
+                a.Property(p => p.ProgrammingLanguageId).HasColumnName("ProgrammingLanguageId");
+                a.Property(p => p.Description).HasColumnName("Description");
+                a.HasOne(a => a.ProgrammingLanguage);
             });
             ProgrammingLanguage[] programmingLanguageEntitySeeds = { new(1, "C#", "7.0", DateTime.Now), new(2, "Ruby", "4.0", DateTime.Now) };
             modelBuilder.Entity<ProgrammingLanguage>().HasData(programmingLanguageEntitySeeds);
+
+            ProgrammingLanguageTechnology[] programmingLanguageTechnologies = { new(1, 1, "MVC", "Örnek sürüm") ,new(2,1,"Core","Örnek sürüm")};
+            modelBuilder.Entity<ProgrammingLanguageTechnology>().HasData(programmingLanguageTechnologies);
 
         }
     }

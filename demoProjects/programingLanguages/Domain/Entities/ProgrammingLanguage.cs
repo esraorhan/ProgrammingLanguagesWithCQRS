@@ -13,6 +13,8 @@ namespace Domain.Entities
         public string Version { get; set; }
 
         public DateTime CreatedTime { get; set; }
+
+        public virtual ICollection<ProgrammingLanguageTechnology> ProgrammingLanguageTechnologies { get; set; }
         public ProgrammingLanguage() 
         {
         }

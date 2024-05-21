@@ -20,6 +20,8 @@ namespace Application.Features.ProgrammingLanguageTechnologies.Profiles
                 .ForMember(c => c.ProgrammingLanguageName, opt => opt.MapFrom(c => c.ProgrammingLanguage.Name))
                 .ReverseMap();
             CreateMap<IPaginate<ProgrammingLanguageTechnology>, ProgrammingLanguageTechnologyListModel>().ReverseMap();
+            CreateMap<ProgrammingLanguageTechnology, ProgrammingLanguageTechnologyGetByIdDto>()
+                .ForMember(c=>c.ProgrammingLanguageName,opt=>opt.MapFrom(c=>c.ProgrammingLanguage.Name)).ReverseMap();  
         }
     }
 }

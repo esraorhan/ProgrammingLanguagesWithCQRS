@@ -20,7 +20,6 @@
 
   <ItemGroup>
     <Folder Include="Features\ProgrammingLanguageTechnologies\Commands\" />
-    <Folder Include="Features\ProgrammingLanguageTechnologies\Queries\GetByIdProgrammingLanguageTechnology\" />
     <Folder Include="Features\ProgrammingLanguageTechnologies\Rules\" />
   </ItemGroup>
 

@@ -1,5 +1,9 @@
-﻿using Application.Features.ProgrammingLanguages.Queries.GetListProgrammingLanguage;
+﻿using Application.Features.ProgrammingLanguages.Dtos;
+using Application.Features.ProgrammingLanguages.Queries.GetByIdProgrammingLanguage;
+using Application.Features.ProgrammingLanguages.Queries.GetListProgrammingLanguage;
+using Application.Features.ProgrammingLanguageTechnologies.Dtos;
 using Application.Features.ProgrammingLanguageTechnologies.Models;
+using Application.Features.ProgrammingLanguageTechnologies.Queries.GetByIdProgrammingLanguageTechnology;
 using Application.Features.ProgrammingLanguageTechnologies.Queries.GetListProgrammingLanguageTechnology;
 using Core.Application.Requests;
 using Microsoft.AspNetCore.Http;
@@ -17,6 +21,13 @@ namespace WebAPI.Controllers
             GetListProgrammingLanguageTechnologyQuery getListQuery = new GetListProgrammingLanguageTechnologyQuery { PageRequest = pageRequest };
             ProgrammingLanguageTechnologyListModel result = await Mediator.Send(getListQuery);
             return Ok(result);
+        }
+
+        [HttpGet("{Id}")]
+        public async Task<IActionResult> GetById([FromRoute] GetByIdProgrammingLanguageTechnologyQuery getByIdProgrammingLanguageTechnology)
+        {
+            ProgrammingLanguageTechnologyGetByIdDto PLGetByIdDto = await Mediator.Send(getByIdProgrammingLanguageTechnology);
+            return Ok(PLGetByIdDto);
         }
     }
 }

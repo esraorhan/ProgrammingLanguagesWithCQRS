@@ -20,11 +20,8 @@
 
   <ItemGroup>
     <Folder Include="Features\ProgrammingLanguageTechnologies\Commands\" />
-    <Folder Include="Features\ProgrammingLanguageTechnologies\Dtos\" />
-    <Folder Include="Features\ProgrammingLanguageTechnologies\Models\" />
+    <Folder Include="Features\ProgrammingLanguageTechnologies\Queries\GetByIdProgrammingLanguageTechnology\" />
     <Folder Include="Features\ProgrammingLanguageTechnologies\Rules\" />
-    <Folder Include="Features\ProgrammingLanguageTechnologies\Queries\" />
-    <Folder Include="Features\ProgrammingLanguageTechnologies\Profiles\" />
   </ItemGroup>
 
 </Project>

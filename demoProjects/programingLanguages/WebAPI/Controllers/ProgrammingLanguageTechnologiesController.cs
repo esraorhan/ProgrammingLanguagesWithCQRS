@@ -1,6 +1,7 @@
 ﻿using Application.Features.ProgrammingLanguages.Dtos;
 using Application.Features.ProgrammingLanguages.Queries.GetByIdProgrammingLanguage;
 using Application.Features.ProgrammingLanguages.Queries.GetListProgrammingLanguage;
+using Application.Features.ProgrammingLanguageTechnologies.Commands.CreateProgrammingLanguageTechnology;
 using Application.Features.ProgrammingLanguageTechnologies.Dtos;
 using Application.Features.ProgrammingLanguageTechnologies.Models;
 using Application.Features.ProgrammingLanguageTechnologies.Queries.GetByIdProgrammingLanguageTechnology;
@@ -28,6 +29,13 @@ namespace WebAPI.Controllers
         {
             ProgrammingLanguageTechnologyGetByIdDto PLGetByIdDto = await Mediator.Send(getByIdProgrammingLanguageTechnology);
             return Ok(PLGetByIdDto);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Add([FromBody] CreateProgrammingLanguageTechnologyCommand createCommand)
+        {
+            CreatedProgrammingLanguageTechnologyDto result = await Mediator.Send(createCommand);
+            return Created("", result);
         }
     }
 }

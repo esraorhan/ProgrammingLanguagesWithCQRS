@@ -1,4 +1,7 @@
-﻿using Application.Features.ProgrammingLanguageTechnologies.Dtos;
+﻿using Application.Features.ProgrammingLanguages.Commands.CreateProgrammingLanguage;
+using Application.Features.ProgrammingLanguages.Dtos;
+using Application.Features.ProgrammingLanguageTechnologies.Commands.CreateProgrammingLanguageTechnology;
+using Application.Features.ProgrammingLanguageTechnologies.Dtos;
 using Application.Features.ProgrammingLanguageTechnologies.Models;
 using AutoMapper;
 using Core.Persistence.Paging;
@@ -21,7 +24,10 @@ namespace Application.Features.ProgrammingLanguageTechnologies.Profiles
                 .ReverseMap();
             CreateMap<IPaginate<ProgrammingLanguageTechnology>, ProgrammingLanguageTechnologyListModel>().ReverseMap();
             CreateMap<ProgrammingLanguageTechnology, ProgrammingLanguageTechnologyGetByIdDto>()
-                .ForMember(c=>c.ProgrammingLanguageName,opt=>opt.MapFrom(c=>c.ProgrammingLanguage.Name)).ReverseMap();  
+                .ForMember(c=>c.ProgrammingLanguageName,opt=>opt.MapFrom(c=>c.ProgrammingLanguage.Name)).ReverseMap();
+
+            CreateMap<ProgrammingLanguageTechnology, CreatedProgrammingLanguageTechnologyDto>().ReverseMap();
+            CreateMap<ProgrammingLanguageTechnology, CreateProgrammingLanguageTechnologyCommand>().ReverseMap();
         }
     }
 }

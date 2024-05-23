@@ -9,7 +9,9 @@ using Application.Features.ProgrammingLanguageTechnologies.Dtos;
 using Application.Features.ProgrammingLanguageTechnologies.Models;
 using Application.Features.ProgrammingLanguageTechnologies.Queries.GetByIdProgrammingLanguageTechnology;
 using Application.Features.ProgrammingLanguageTechnologies.Queries.GetListProgrammingLanguageTechnology;
+using Application.Features.ProgrammingLanguageTechnologies.Queries.GetListProgrammingLanguageTechnologyByDynamic;
 using Core.Application.Requests;
+using Core.Persistence.Dynamic;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -55,6 +57,14 @@ namespace WebAPI.Controllers
             DeletedProgrammingLanguageTechnologyDto deletedProgrammingLanguageTechnologyDto = await Mediator.Send(deleteProgramming);
 
             return Ok(deletedProgrammingLanguageTechnologyDto);
+        }
+
+        [HttpPost("GetList/ByDynamic")]
+        public async Task<ActionResult> GetListByDynamic([FromQuery] PageRequest pageRequest, [FromBody] Dynamic dynamic)
+        {
+            GetListProgrammingLanguageTechnologyByDynamicQuery getListModelByDynamicQuery = new GetListProgrammingLanguageTechnologyByDynamicQuery { PageRequest = pageRequest, Dynamic = dynamic };
+            ProgrammingLanguageTechnologyListModel result = await Mediator.Send(getListModelByDynamicQuery);
+            return Ok(result);
         }
     }
 }

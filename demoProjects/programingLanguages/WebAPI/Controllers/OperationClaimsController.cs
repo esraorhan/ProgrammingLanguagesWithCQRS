@@ -25,6 +25,6 @@ namespace WebAPI.Controllers
             GetListOperationClaimQuery getListOperationClaimQuery = new() { PageRequest = pageRequest };
             OperationClaimListModel result = await Mediator.Send(getListOperationClaimQuery);
             return Ok(result);
-        }
+        } 
     }
 }

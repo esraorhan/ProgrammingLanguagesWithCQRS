@@ -1,4 +1,5 @@
 ﻿using Application.Features.OperationClaims.Commands;
+using Application.Features.OperationClaims.Commands.UpdateOperationClaim;
 using Application.Features.OperationClaims.Dtos;
 using Application.Features.OperationClaims.Models;
 using AutoMapper;
@@ -22,6 +23,11 @@ namespace Application.Features.OperationClaims.Profiles
             CreateMap<IPaginate<OperationClaim>, OperationClaimListModel>().ReverseMap();
             CreateMap<OperationClaim, OperationClaimListDto>().ReverseMap();
             CreateMap<OperationClaim, OperationClaimGetByIdDto>().ReverseMap();
+
+            CreateMap<OperationClaim, UpdatedOperationClaimDto>().ReverseMap();
+            CreateMap<OperationClaim,UpdateOperationClaimCommand>().ReverseMap();
+           
+           
         }
     }
 }
